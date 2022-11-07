@@ -36,7 +36,12 @@ const App = () => {
 
   const { data, isLoading, error, refetch } = useQuery(
     "meme-gallery",
-    fetchData
+    fetchData,
+    {
+      cacheTime: 0,
+      staleTime: 0,
+      refetchOnWindowFocus: false,
+    }
   );
 
   if (error)
@@ -53,7 +58,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div style={{ textAlign: "center", padding: 6 }}>
+      <div style={{ textAlign: "center", padding: 7 }}>
         <Button
           variant="contained"
           endIcon={<RefreshRounded />}
